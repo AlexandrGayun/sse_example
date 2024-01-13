@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: final
+    env_file:
+      - .env
+    restart: on-failure
+    ports:
+      - ${HTTP_API_PORT}:${HTTP_API_PORT}
+networks:
+  default:
+    name: sse_example
